@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# 🧩 Sudoku PWA - Offline Sudoku Progressive Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully-featured Progressive Web App for playing Sudoku puzzles offline with multiple difficulty levels, annotations, and game persistence.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### Core Gameplay
+- **Sudoku Generator**: Creates puzzles with Easy, Medium, and Hard difficulty levels
+- **Interactive Board**: Click to select cells, enter numbers, and navigate with keyboard
+- **Annotations/Notes**: Toggle annotation mode to add pencil marks in cells
+- **Real-time Validation**: Highlights conflicts and invalid moves
+- **Hint System**: Get hints when stuck
 
-### `npm start`
+### PWA Capabilities
+- **Offline First**: Fully functional without internet connection
+- **Service Worker**: Caches all assets for offline use
+- **Installable**: Add to home screen on mobile and desktop
+- **Responsive Design**: Works seamlessly on all device sizes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Game Management
+- **Auto-save**: Automatically saves progress every 30 seconds
+- **Manual Save**: Save games manually at any time
+- **Load Games**: Resume incomplete games or view completed ones
+- **Undo/Redo**: Full history system with undo and redo functionality
+- **Timer**: Track your solving time
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Experience
+- **Dark/Light Theme**: Toggle between themes with persistent preference
+- **Statistics**: Track your progress, completion rates, and average times
+- **Keyboard Support**: Full keyboard navigation and number input
+- **Error Highlighting**: Visual feedback for invalid moves
 
-### `npm test`
+## 🎮 How to Play
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Basic Controls
+1. **Select Cell**: Click on any cell to select it
+2. **Enter Numbers**: 
+   - Click number pad buttons OR
+   - Press number keys (1-9) on keyboard
+3. **Clear Cell**: 
+   - Double-click the cell OR
+   - Press Delete/Backspace OR
+   - Click the Clear button
 
-### `npm run build`
+### Annotation Mode
+1. **Toggle Notes**: Click "📝 Notes" button to enable annotation mode
+2. **Add Notes**: Select numbers to add as pencil marks in empty cells
+3. **Remove Notes**: Click the same numbers again to remove them
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Keyboard Shortcuts
+- **Arrow Keys**: Navigate between cells
+- **Numbers 1-9**: Enter numbers or annotations
+- **Delete/Backspace**: Clear selected cell
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Development
+```bash
+npm start
+```
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it.
 
-### `npm run eject`
+### Production Build
+```bash
+npm run build
+```
+Builds the app for production to the `build` folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Serve Production Build
+```bash
+npm install -g serve
+serve -s build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📱 Installation as PWA
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Desktop
+1. Open the app in Chrome/Edge
+2. Click the install icon in the address bar
+3. Or use the install prompt that appears
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Mobile
+1. Open the app in mobile browser
+2. Tap "Add to Home Screen" when prompted
+3. Or use browser menu → "Add to Home Screen"
 
-## Learn More
+## 🎯 Technical Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Offline Capabilities
+- Generate new puzzles offline
+- Save and load games offline
+- Full gameplay without internet
+- Theme preferences persist offline
+- Statistics saved locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Data Storage
+All data is stored locally using IndexedDB:
+- **Games**: Puzzle state, progress, timestamps
+- **Settings**: Theme preferences, user options
+- **Statistics**: Performance metrics and history
 
-### Code Splitting
+## 🔧 Browser Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- ✅ Chrome 67+ (recommended)
+- ✅ Firefox 60+
+- ✅ Safari 12+
+- ✅ Edge 79+
+- ✅ Mobile browsers with service worker support
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Enjoy solving Sudoku puzzles offline! 🧩✨**

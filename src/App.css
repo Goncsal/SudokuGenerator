@@ -1,38 +1,324 @@
+/* CSS Variables for theming */
+:root {
+  /* Light theme */
+  --primary-color: #4f46e5;
+  --secondary-color: #7c3aed;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
+  
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  
+  --card-bg: #ffffff;
+  --button-bg: #f9fafb;
+  --button-hover-bg: #e5e7eb;
+  
+  --border-color: #d1d5db;
+  --board-border-color: #374151;
+  --board-bg: #ffffff;
+  
+  --cell-bg: #ffffff;
+  --cell-hover-bg: #f3f4f6;
+  --cell-selected-bg: #dbeafe;
+  --cell-highlighted-bg: #f0f9ff;
+  --cell-initial-bg: #f9fafb;
+  --cell-border-color: #d1d5db;
+  
+  --initial-number-color: #374151;
+  --annotation-color: #9ca3af;
+  --annotation-active-color: #6b7280;
+  
+  --error-bg: #fef2f2;
+  --success-bg: #f0fdf4;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  
+  --card-bg: #1f2937;
+  --button-bg: #374151;
+  --button-hover-bg: #4b5563;
+  
+  --border-color: #4b5563;
+  --board-border-color: #9ca3af;
+  --board-bg: #1f2937;
+  
+  --cell-bg: #374151;
+  --cell-hover-bg: #4b5563;
+  --cell-selected-bg: #1e40af;
+  --cell-highlighted-bg: #1e3a8a;
+  --cell-initial-bg: #4b5563;
+  --cell-border-color: #6b7280;
+  
+  --initial-number-color: #e5e7eb;
+  --annotation-color: #9ca3af;
+  --annotation-active-color: #d1d5db;
+  
+  --error-bg: #7f1d1d;
+  --success-bg: #14532d;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-primary);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header-btn {
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  background-color: var(--button-bg);
+  color: var(--text-primary);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.header-btn:hover {
+  background-color: var(--button-hover-bg);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.game-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 500px 280px;
+  grid-template-areas: 
+    "controls board number-pad";
+  gap: 2rem;
+  align-items: start;
+  justify-content: center;
+}
+
+.board-container {
+  grid-area: board;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+}
+
+/* Ensure game controls and number pad are in correct grid areas */
+.game-controls {
+  grid-area: controls;
+}
+
+.number-pad {
+  grid-area: number-pad;
+}
+
+.completion-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.completion-message {
+  background-color: var(--card-bg);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 2px solid var(--success-color);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  margin: 1rem;
+}
+
+.completion-message h2 {
+  margin: 0 0 1rem 0;
+  color: var(--success-color);
+  font-size: 2rem;
+}
+
+.completion-message p {
+  margin: 0 0 2rem 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.new-game-btn {
+  padding: 1rem 2rem;
+  border: none;
+  background-color: var(--success-color);
   color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.new-game-btn:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive design */
+@media (max-width: 1024px) {
+  .game-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "controls"
+      "board"
+      "number-pad";
+    gap: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .board-container {
+    width: auto;
+    height: auto;
+  }
+  
+  .app-main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header-btn {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .completion-message {
+    padding: 2rem;
+  }
+  
+  .completion-message h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0.75rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .game-container {
+    gap: 1rem;
+  }
+  
+  .completion-message {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .header-actions,
+  .game-controls,
+  .number-pad {
+    display: none !important;
+  }
+  
+  .app-main {
+    padding: 0;
+  }
+  
+  .game-container {
+    grid-template-areas: "board";
+    grid-template-columns: 1fr;
   }
 }

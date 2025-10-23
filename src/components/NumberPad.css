@@ -1,0 +1,113 @@
+.number-pad {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.number-pad-header {
+  display: flex;
+  justify-content: center;
+}
+
+.annotation-toggle {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary-color);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.annotation-toggle:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.annotation-toggle.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.number-button {
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color);
+  background-color: var(--button-bg);
+  color: var(--text-primary);
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 50px;
+}
+
+.number-button:hover {
+  background-color: var(--button-hover-bg);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.number-button:active {
+  transform: translateY(0);
+}
+
+.number-pad-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.clear-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--error-color);
+  background-color: var(--card-bg);
+  color: var(--error-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.clear-button:hover {
+  background-color: var(--error-color);
+  color: white;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .number-pad {
+    max-width: 100%;
+    padding: 0.75rem;
+  }
+  
+  .number-button {
+    min-height: 45px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .numbers-grid {
+    gap: 0.25rem;
+  }
+  
+  .number-button {
+    min-height: 40px;
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,93 @@
+.cell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  background-color: var(--cell-bg);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: all 0.2s ease;
+  min-height: 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cell:hover {
+  background-color: var(--cell-hover-bg);
+}
+
+.cell.selected {
+  background-color: var(--cell-selected-bg);
+  border-color: var(--primary-color);
+  border-width: 2px;
+}
+
+.cell.highlighted {
+  background-color: var(--cell-highlighted-bg);
+}
+
+.cell.initial {
+  background-color: var(--cell-initial-bg);
+  color: var(--initial-number-color);
+  font-weight: 700;
+}
+
+.cell.error {
+  background-color: var(--error-bg);
+  color: var(--error-color);
+  border-color: var(--error-color);
+}
+
+.cell-value {
+  font-size: inherit;
+  color: inherit;
+}
+
+.annotations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+  padding: 2px;
+}
+
+.annotation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: var(--annotation-color);
+  font-weight: 500;
+}
+
+.annotation.active {
+  color: var(--annotation-active-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .cell {
+    min-height: 35px;
+    font-size: 1rem;
+  }
+  
+  .annotation {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell {
+    min-height: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .annotation {
+    font-size: 0.4rem;
+  }
+}
